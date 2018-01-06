@@ -3,7 +3,7 @@
 Reference:
 ##https://www.jagoinvestor.com/2013/09/tricks-to-increase-ctc-salary-by-employer.html
 
-##step1:Update the pom.xml to include a Google Cloud Platform plugin that simplifies the deployment process. You can use vim,nano,or emacs to edit the file.
+Step1 :Update the pom.xml to include a Google Cloud Platform plugin that simplifies the deployment process. You can use vim,nano,or emacs to edit the file.
 add this to pom.xml
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -22,7 +22,7 @@ add this to pom.xml
   </build>
 </project>
 
-##step2:Remove Tomcat Starter
+Step2: Remove Tomcat Starter
 App Engine Standard uses Jetty web server underneath. Spring Boot includes Tomcat in the WAR package that will conflict with Jetty. Exclude Tomcat from the Spring Boot Starter, and add back Servlet API as a provided dependency:
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -48,7 +48,7 @@ App Engine Standard uses Jetty web server underneath. Spring Boot includes Tomca
   </dependencies>
 </project>
 
-##step3:Exclude JUL to SLF4J Bridge
+Step3 :Exclude JUL to SLF4J Bridge
 Spring Boot also includes a JUL to SLF4J bridge that interferes with App Engine's log handler that's provided through Jetty server. To get proper log entries, you must exclude the jul-to-slf4j artifact by marking it as provided.
 
 pom.xml
@@ -64,7 +64,7 @@ pom.xml
   </dependencies>
 </project>
 
-##step4:Add App Engine Descriptor
+Step4: Add App Engine Descriptor
 To deploy the application into App Engine standard, you must add create a new src/main/webapp/WEB-INF/appengine-web.xml descriptor file:
 
 $ mkdir -p src/main/webapp/WEB-INF/
